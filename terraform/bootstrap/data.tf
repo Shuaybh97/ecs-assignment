@@ -36,6 +36,7 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "iam:ListRolePolicies",
       "iam:ListPolicyVersions",
       "iam:DeletePolicyVersion",
+      "iam:CreatePolicyVersion",
       "iam:PassRole",
       "ecs:*",
       "ec2:*",
