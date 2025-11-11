@@ -1,1 +1,6 @@
 .idea/**/workspace.xml
+terraform.tfstate
+terraform.tfstate.backup
+.terraform
+.DS_Store
+*.tfvars
