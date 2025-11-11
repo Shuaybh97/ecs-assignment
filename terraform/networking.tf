@@ -8,7 +8,7 @@ resource "aws_vpc" "main" {
 }
 
 locals {
-  azs = slice(data.aws_availability_zones.available.names, 0, 2) 
+  azs = slice(data.aws_availability_zones.available.names, 0, 2)
 }
 
 # Public subnets for the ALB
@@ -35,7 +35,7 @@ resource "aws_subnet" "private" {
 # Internet gateway for public subnets / ALB
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
-  tags = merge(local.tags, { Name = "${local.project_name}-igw" })
+  tags   = merge(local.tags, { Name = "${local.project_name}-igw" })
 }
 
 # Public route table -> IGW
@@ -64,7 +64,7 @@ resource "aws_eip" "nat" {
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.public[0].id
-  tags = merge(local.tags, { Name = "${local.project_name}-nat" })
+  tags          = merge(local.tags, { Name = "${local.project_name}-nat" })
 }
 
 # Private route table -> NAT

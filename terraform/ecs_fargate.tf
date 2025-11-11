@@ -2,7 +2,7 @@ resource "aws_ecs_cluster" "this" {
   name = "ecs_cluster"
 
   setting {
-    name =  "containerInsights"
+    name  = "containerInsights"
     value = "enabled"
   }
 
@@ -12,7 +12,7 @@ resource "aws_ecs_cluster" "this" {
 resource "aws_cloudwatch_log_group" "app" {
   name              = "/ecs/${local.project_name}"
   retention_in_days = 14
-  tags = local.tags
+  tags              = local.tags
 }
 
 resource "aws_ecs_task_definition" "app" {
@@ -21,7 +21,7 @@ resource "aws_ecs_task_definition" "app" {
   cpu                      = var.cpu
   memory                   = var.memory
   execution_role_arn       = aws_iam_role.task_execution.arn
-  network_mode = "awsvpc"
+  network_mode             = "awsvpc"
 
   container_definitions = jsonencode([
     {
@@ -59,8 +59,8 @@ resource "aws_ecs_service" "fargate_service" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets         = aws_subnet.private[*].id
-    security_groups = aws_security_group.ecs[*].id
+    subnets          = aws_subnet.private[*].id
+    security_groups  = aws_security_group.ecs[*].id
     assign_public_ip = false
   }
 

@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "ecs_task_assume_role" {
       identifiers = ["ecs-tasks.amazonaws.com"]
     }
     actions = ["sts:AssumeRole"]
-}
+  }
 }
 
 
@@ -26,7 +26,7 @@ data "aws_iam_policy_document" "ecr_repo_policy" {
     ]
 
     resources = [aws_ecr_repository.ecr-app.arn]
- 
+
   }
 
   statement {

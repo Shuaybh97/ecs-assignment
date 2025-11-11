@@ -3,7 +3,7 @@ locals {
 
   tags = {
     Environment = "Development"
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
   }
 }
 
