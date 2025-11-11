@@ -27,3 +27,10 @@ variable "region" {
   type        = string
   default     = "eu-west-2"
 }
+
+variable "hosted_zone_name" {
+  description = "The name of the Route 53 hosted zone"
+  type        = string
+  default     = "shuaib.dev"
+  
+}
