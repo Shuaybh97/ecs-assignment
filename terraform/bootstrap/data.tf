@@ -10,16 +10,45 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "s3:GetBucketVersioning",
       "s3:PutBucketVersioning",
       "s3:GetEncryptionConfiguration",
-      "s3:PutEncryptionConfiguration",
+      "s3:PutEncryptionConfiguration"
+    ]
+    resources = ["*"]
+  }
+  statement {
+    effect = "Allow"
+    actions = [
       "dynamodb:PutItem",
       "dynamodb:GetItem",
       "dynamodb:DeleteItem",
-      "dynamodb:Scan",
       "dynamodb:UpdateItem",
-      "dynamodb:DescribeTable",
-      "dynamodb:ListTables",
-      "ec2:*",
-      "iam:*",
+      "dynamodb:Scan",
+      "dynamodb:DescribeTable"
+    ]
+    resources = ["*"]
+  }
+  statement {
+    effect = "Allow"
+    actions = [
+      "iam:CreateRole",
+      "iam:DeleteRole",
+      "iam:GetRole",
+      "iam:UpdateRole",
+      "iam:AttachRolePolicy",
+      "iam:DetachRolePolicy",
+      "iam:CreatePolicy",
+      "iam:DeletePolicy",
+      "iam:GetPolicy",
+      "iam:ListAttachedRolePolicies"
+    ]
+    resources = ["*"]
+  }
+  statement {
+    effect = "Allow"
+    actions = [
+      "ecs:*",
+      "ecr:*",
+      "logs:*",
+      "cloudwatch:*"
     ]
     resources = ["*"]
   }
