@@ -46,7 +46,10 @@ data "aws_iam_policy_document" "github_actions_policy" {
     actions = [
       "iam:*",
     ]
-    resources = [aws_iam_openid_connect_provider.github.arn]
+    resources = [
+      aws_iam_openid_connect_provider.github.arn,
+      aws_iam_role.github_actions_oidc.arn,
+    ]
   }
 }
 
