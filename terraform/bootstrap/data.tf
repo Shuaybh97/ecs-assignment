@@ -35,6 +35,7 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "iam:GetOpenIDConnectProvider",
       "iam:ListRolePolicies",
       "iam:ListPolicyVersions",
+      "iam:DeletePolicyVersion",
       "ecs:*",
       "ec2:*",
       "ecr:*",
