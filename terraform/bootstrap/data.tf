@@ -45,7 +45,7 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "route53:*",
       "elasticloadbalancing:*",
       "cloudwatch:*",
-      "acm:RequestCertificate"
+      "acm:*",
     ]
     resources = ["*"]
   }
