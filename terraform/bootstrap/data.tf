@@ -24,6 +24,14 @@ data "aws_iam_policy_document" "github_actions_policy" {
     ]
     resources = ["*"]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "iam:GetPolicyVersion",
+    ]
+    resources = [aws_iam_policy.github_actions_bootstrap_policy]
+  }
 }
 
 data "aws_iam_policy_document" "github_actions_bootstrap_policy" {
@@ -53,9 +61,8 @@ data "aws_iam_policy_document" "github_actions_bootstrap_policy" {
     ]
     resources = [
       aws_iam_openid_connect_provider.github.arn,
-      aws_iam_role.github_actions_oidc.arn,
-      aws_iam_policy.github_actions_policy.arn,
-    ]
+      aws_iam_role.github_actions_oidc.arn
+      ]
   }
 
 }
