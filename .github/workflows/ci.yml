@@ -40,5 +40,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ steps.login-ecr.outputs.registry }}/ecs-project:${{ github.sha }
+        tags: ${{ steps.login-ecr.outputs.registry }}/ecs-project:${{ github.sha }}
         working-directory: ./app
