@@ -87,3 +87,13 @@ resource "aws_iam_role_policy_attachment" "github_actions_attach_policy" {
   policy_arn = aws_iam_policy.github_actions_policy.arn
 }
 
+resource "aws_iam_policy" "github_actions_bootstrap_policy" {
+  name        = "github-actions-oidc-bootstrap-policy-${var.environment}"
+  description = "Policy allowing bootstrap operations for GitHub Actions"
+  policy      = data.aws_iam_policy_document.github_actions_bootstrap_policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "github_actions_attach_bootstrap_policy" {
+  role       = aws_iam_role.github_actions_oidc.name
+  policy_arn = aws_iam_policy.github_actions_bootstrap_policy.arn
+}

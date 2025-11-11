@@ -24,13 +24,18 @@ data "aws_iam_policy_document" "github_actions_policy" {
     ]
     resources = ["*"]
   }
+}
 
+data "aws_iam_policy_document" "github_actions_bootstrap_policy" {
   statement {
     effect = "Allow"
     actions = [
       "s3:*",
     ]
-    resources = [aws_s3_bucket.tf_state.arn]
+    resources = [
+      aws_s3_bucket.tf_state.arn,
+      "${aws_s3_bucket.tf_state.arn}/*"
+    ]
   }
 
   statement {
@@ -51,10 +56,8 @@ data "aws_iam_policy_document" "github_actions_policy" {
       aws_iam_role.github_actions_oidc.arn,
     ]
   }
+
 }
-
-
-
 
 
 # Data source for the assume role policy
