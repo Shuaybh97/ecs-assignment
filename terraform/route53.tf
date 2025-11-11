@@ -9,3 +9,12 @@ resource "aws_route53_record" "cert_validation" {
   ttl     = 60
   records = [tolist(aws_acm_certificate.cert.domain_validation_options)[0].resource_record_value]
 }
+
+
+resource "aws_route53_record" "cert_validation" {
+  zone_id = aws_route53_zone.primary.zone_id
+  name    = var.hosted_zone_name
+  type    = "CNAME"
+  ttl     = 60
+  records = [aws_lb.alb.dns_name]
+}
