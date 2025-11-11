@@ -13,8 +13,8 @@ resource "aws_route53_record" "cert_validation" {
 
 resource "aws_route53_record" "domain_name_record" {
   zone_id = aws_route53_zone.primary.zone_id
-  name    = var.hosted_zone_name
-  type    = "CNAME"
+  name    = aws_route53_zone.primary.name
+  type    = "A"
   ttl     = 60
   records = [aws_lb.alb.dns_name]
 }
