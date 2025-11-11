@@ -18,7 +18,9 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "dynamodb:UpdateItem",
       "dynamodb:DescribeTable",
       "dynamodb:ListTables",
-      "ec2:*"
+      "ec2:*",
+      "iam:GetRole",
+      "iam:GetPolicy"
     ]
     resources = ["*"]
   }
