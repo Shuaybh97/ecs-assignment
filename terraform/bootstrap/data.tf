@@ -22,7 +22,34 @@ data "aws_iam_policy_document" "github_actions_policy" {
     ]
     resources = ["*"]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "s3:*",
+    ]
+    resources = [aws_s3_bucket.tf_state.arn]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "dynamodb:*",
+    ]
+    resources = [aws_dynamodb_table.tf_lock.arn]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "iam:*",
+    ]
+    resources = [aws_iam_openid_connect_provider.github.arn]
+  }
 }
+
+
+
 
 
 # Data source for the assume role policy
