@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "iam:*",
     ]
     resources = ["*"]
-  }      
+  }
 }
 
 # Data source for the assume role policy
