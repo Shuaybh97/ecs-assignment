@@ -30,7 +30,7 @@ data "aws_iam_policy_document" "github_actions_policy" {
     actions = [
       "iam:GetPolicyVersion",
     ]
-    resources = [aws_iam_policy.github_actions_bootstrap_policy]
+    resources = [aws_iam_policy.github_actions_bootstrap_policy.arn]
   }
 }
 
