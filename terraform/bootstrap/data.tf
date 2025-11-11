@@ -3,28 +3,19 @@ data "aws_iam_policy_document" "github_actions_policy" {
   statement {
     effect = "Allow"
     actions = [
-      "s3:ListBucket",
-      "s3:GetObject",
-      "s3:PutObject",
-      "s3:DeleteObject",
-      "s3:GetBucketVersioning",
-      "s3:PutBucketVersioning",
-      "s3:GetEncryptionConfiguration",
-      "s3:PutEncryptionConfiguration"
+      "s3:*"
     ]
-    resources = ["*"]
+    resources = [
+      aws_s3_bucket.tf_state.arn,
+      "${aws_s3_bucket.tf_state.arn}/*"
+    ]
   }
   statement {
     effect = "Allow"
     actions = [
-      "dynamodb:PutItem",
-      "dynamodb:GetItem",
-      "dynamodb:DeleteItem",
-      "dynamodb:UpdateItem",
-      "dynamodb:Scan",
-      "dynamodb:DescribeTable"
+      "dynamodb:*"
     ]
-    resources = ["*"]
+    resources = [aws_dynamodb_table.tf_lock.arn]
   }
   statement {
     effect = "Allow"
@@ -38,13 +29,9 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "iam:CreatePolicy",
       "iam:DeletePolicy",
       "iam:GetPolicy",
-      "iam:ListAttachedRolePolicies"
-    ]
-    resources = ["*"]
-  }
-  statement {
-    effect = "Allow"
-    actions = [
+      "iam:UpdatePolicy",
+      "iam:ListAttachedRolePolicies",
+      "iam:GetPolicyVersion",
       "ecs:*",
       "ecr:*",
       "logs:*",
