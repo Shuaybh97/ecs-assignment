@@ -50,6 +50,7 @@ jobs:
     name: 'Terraform Dev Deployment'
     runs-on: ubuntu-latest
     environment: dev
+    needs: terraform-bootstrap
 
     defaults:
       run:
