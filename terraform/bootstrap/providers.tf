@@ -1,5 +1,5 @@
 terraform {
-   backend "s3" {
+  backend "s3" {
     bucket         = "ecs-assignment-terraform-state-bucket"
     key            = "ecs-assignment/bootstrap-terraform.tfstate"
     region         = "eu-west-2"

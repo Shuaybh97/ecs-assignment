@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   terraform-bootstrap:
-    name: 'Terraform'
+    name: 'Terraform Bootstrap'
     runs-on: ubuntu-latest
     environment: dev
 
@@ -47,7 +47,7 @@ jobs:
       run: terraform apply -auto-approve -input=false -lock=false
   
   terraform-dev:
-    name: 'Terraform'
+    name: 'Terraform Dev Deployment'
     runs-on: ubuntu-latest
     environment: dev
 
