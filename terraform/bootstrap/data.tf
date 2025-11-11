@@ -36,10 +36,13 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "iam:ListRolePolicies",
       "iam:ListPolicyVersions",
       "iam:DeletePolicyVersion",
+      "iam:PassRole",
       "ecs:*",
       "ec2:*",
       "ecr:*",
       "logs:*",
+      "route53:*",
+      "elasticloadbalancing:*",
       "cloudwatch:*",
     ]
     resources = ["*"]
