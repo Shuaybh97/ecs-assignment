@@ -16,7 +16,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./app
 
     steps:
     - name: Checkout code
@@ -34,10 +33,12 @@ jobs:
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
+      
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
         context: .
         push: true
-        tags: ${{ steps.login-ecr.outputs.registry }}/ecs-project:${{ github.sha }}
+        tags: ${{ steps.login-ecr.outputs.registry }}/ecs-project:${{ github.sha }
+        working-directory: ./app
