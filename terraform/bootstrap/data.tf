@@ -19,54 +19,11 @@ data "aws_iam_policy_document" "github_actions_policy" {
       "dynamodb:DescribeTable",
       "dynamodb:ListTables",
       "ec2:*",
-      "iam:GetRole",
-      "iam:GetPolicy"
-    ]
-    resources = ["*"]
-  }
-
-  statement {
-    effect = "Allow"
-    actions = [
-      "iam:GetPolicyVersion",
-    ]
-    resources = [aws_iam_policy.github_actions_bootstrap_policy.arn]
-  }
-}
-
-data "aws_iam_policy_document" "github_actions_bootstrap_policy" {
-  statement {
-    effect = "Allow"
-    actions = [
-      "s3:*",
-    ]
-    resources = [
-      aws_s3_bucket.tf_state.arn,
-      "${aws_s3_bucket.tf_state.arn}/*"
-    ]
-  }
-
-  statement {
-    effect = "Allow"
-    actions = [
-      "dynamodb:*",
-    ]
-    resources = [aws_dynamodb_table.tf_lock.arn]
-  }
-
-  statement {
-    effect = "Allow"
-    actions = [
       "iam:*",
     ]
-    resources = [
-      aws_iam_openid_connect_provider.github.arn,
-      aws_iam_role.github_actions_oidc.arn
-    ]
-  }
-
+    resources = ["*"]
+  }      
 }
-
 
 # Data source for the assume role policy
 data "aws_iam_policy_document" "github_actions_assume_role" {
