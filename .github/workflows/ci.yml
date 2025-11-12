@@ -40,5 +40,14 @@ jobs:
       with:
         context: ./app
         push: true
-        tags: ${{ steps.login-ecr.outputs.registry }}/ecs-project:${{ github.sha }}
-  
+        tags: ${{ steps.login-ecr.outputs.registry }}/ecs-assignment:${{ github.sha }}
+
+    # - name: Deploy to Amazon ECS
+    #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+    #   with:
+    #     task-definition: ./app/task-definition.json  # Path to your task definition JSON file
+    #     service: my-ecs-service  # Replace with your ECS service name
+    #     cluster: my-ecs-cluster  # Replace with your ECS cluster name
+    #     image1-value: ${{ steps.login-ecr.outputs.registry }}/ecs-assignment:${{ github.sha }}
+    #     wait-for-service-stability: true
+
