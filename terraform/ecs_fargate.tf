@@ -49,7 +49,7 @@ resource "aws_ecs_task_definition" "app" {
   ])
 
   lifecycle {
-    ignore_changes = [ container_definitions ]
+    ignore_changes = [container_definitions]
   }
 
   tags = local.tags

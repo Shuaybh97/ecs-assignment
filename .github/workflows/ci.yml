@@ -3,6 +3,11 @@ name: CI
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'app/**'
+  pull_request:
+    paths:
+      - 'app/**'
 
 permissions:
   id-token: write

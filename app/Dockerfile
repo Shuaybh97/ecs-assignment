@@ -11,6 +11,11 @@ RUN yarn build
 # Production image
 FROM nginx:stable-alpine
 
+RUN addgroup -g 1001 -S appgroup && adduser -S appuser -u 1001 -G appgroup
+RUN chown -R appuser:appgroup /usr/share/nginx/html /var/cache/nginx /var/log/nginx /etc/nginx/conf.d /run/
+USER appuser
+
+
 # Copy build artifacts
 COPY --from=builder /app/build /usr/share/nginx/html
 
