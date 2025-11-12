@@ -37,17 +37,26 @@ jobs:
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
+      id: build-image
       with:
         context: ./app
         push: true
         tags: ${{ steps.login-ecr.outputs.registry }}/ecs-assignment:${{ github.sha }}
+      
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: ./app/task-definition.json
+        container-name: app
+        image: ${{ steps.login-ecr.outputs.registry }}/ecs-assignment:${{ github.sha }}
 
-    # - name: Deploy to Amazon ECS
-    #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-    #   with:
-    #     task-definition: ./app/task-definition.json  # Path to your task definition JSON file
-    #     service: my-ecs-service  # Replace with your ECS service name
-    #     cluster: my-ecs-cluster  # Replace with your ECS cluster name
-    #     image1-value: ${{ steps.login-ecr.outputs.registry }}/ecs-assignment:${{ github.sha }}
-    #     wait-for-service-stability: true
+    - name: Deploy to Amazon ECS
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ./app/task-definition.json  
+        service: ecs-project-service
+        cluster: ecs_cluster  
+        image1-value: ${{ steps.login-ecr.outputs.registry }}/ecs-assignment:${{ github.sha }}
+        wait-for-service-stability: true
 
