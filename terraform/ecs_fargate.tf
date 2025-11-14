@@ -76,5 +76,4 @@ resource "aws_ecs_service" "fargate_service" {
 
   tags = local.tags
 
-  depends_on = [aws_lb_listener.https]
 }
