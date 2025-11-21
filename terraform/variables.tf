@@ -34,14 +34,3 @@ variable "hosted_zone_name" {
   default     = "tm.shuaib.dev"
 
 }
-
-variable "cloudflare_api_token" {
-  description = "Cloudflare API token"
-  type        = string
-  sensitive   = true
-}
-
-variable "cloudflare_zone_id" {
-  description = "Cloudflare zone ID for the parent domain"
-  type        = string
-}
