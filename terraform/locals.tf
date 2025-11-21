@@ -1,5 +1,5 @@
 locals {
-  project_name = "ecs-project"
+  project_name = "shuaib-ecs-project"
 
   tags = {
     Environment = "Development"

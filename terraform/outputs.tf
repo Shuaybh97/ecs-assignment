@@ -28,3 +28,9 @@ output "task_definition_arn" {
   description = "The ARN of the ECS task definition"
   value       = aws_ecs_task_definition.app.arn
 }
+
+output "domain_validation_options" {
+  description = "The domain validation options for the ACM certificate"
+  value       = aws_acm_certificate.cert.domain_validation_options
+}
+

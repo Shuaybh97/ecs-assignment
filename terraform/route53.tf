@@ -21,3 +21,13 @@ resource "aws_route53_record" "domain_name_record" {
     evaluate_target_health = true
   }
 }
+
+
+resource "cloudflare_dns_record" "ns" {
+  count   = 4
+  zone_id = var.cloudflare_zone_id
+  name    = split(".", var.hosted_zone_name)[0]
+  type    = "NS"
+  content = aws_route53_zone.primary.name_servers[count.index]
+  ttl     = 300
+}
