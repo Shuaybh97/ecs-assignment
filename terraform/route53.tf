@@ -25,7 +25,7 @@ resource "aws_route53_record" "domain_name_record" {
 
 resource "cloudflare_dns_record" "ns" {
   count   = 4
-  zone_id = var.cloudflare_zone_id
+  zone_id = jsondecode(data.aws_secretsmanager_secret_version.cloudflare_zone_id.secret_string)["cloudflare_zone_id"]
   name    = split(".", var.hosted_zone_name)[0]
   type    = "NS"
   content = aws_route53_zone.primary.name_servers[count.index]

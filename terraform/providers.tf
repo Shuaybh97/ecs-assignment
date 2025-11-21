@@ -25,5 +25,5 @@ provider "aws" {
 }
 
 provider "cloudflare" {
-  api_token = var.cloudflare_api_token
+  api_token = jsondecode(data.aws_secretsmanager_secret_version.cloudflare_api_token.secret_string)["cloudflare_api_token"]
 }

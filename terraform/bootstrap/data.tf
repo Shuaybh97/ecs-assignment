@@ -50,6 +50,14 @@ data "aws_iam_policy_document" "github_actions_policy" {
     ]
     resources = ["*"]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "secretsmanager:GetSecretValue"
+    ]
+    resources = ["*"]
+  }
 }
 
 # Data source for the assume role policy
@@ -73,3 +81,4 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
     }
   }
 }
+

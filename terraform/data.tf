@@ -50,3 +50,10 @@ data "aws_iam_policy_document" "ecr_repo_policy" {
   }
 }
 
+data "aws_secretsmanager_secret_version" "cloudflare_api_token" {
+  secret_id = "cloudflare_api_token"  
+}
+
+data "aws_secretsmanager_secret_version" "cloudflare_zone_id" {
+  secret_id = "cloudflare_zone_id"  
+}
