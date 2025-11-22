@@ -32,7 +32,7 @@
         }
     ],
     "cpu": "256",
-    "executionRoleArn": "arn:aws:iam::850649281993:role/ecs-project-task-exec",
+    "executionRoleArn": "arn:aws:iam::850649281993:role/shuaib-ecs-project-task-exec",
     "family": "ecs-project-task",
     "memory": "512",
     "networkMode": "awsvpc",
