@@ -118,8 +118,8 @@ resource "aws_security_group" "ecs" {
   description = "Allow traffic from ALB to ECS tasks"
 
   ingress {
-    from_port       = 80
-    to_port         = 80
+    from_port       = var.container_port
+    to_port         = var.container_port
     protocol        = "tcp"
     security_groups = [aws_security_group.alb.id]
     description     = "Allow ALB to reach containers"
@@ -159,7 +159,7 @@ resource "aws_lb_target_group" "app" {
   tags = local.tags
 }
 
-# # Listener
+# Listener
 resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.alb.arn
   port              = "443"

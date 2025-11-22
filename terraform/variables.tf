@@ -7,7 +7,7 @@ variable "vpc_cidr" {
 variable "container_port" {
   description = "Container port to expose"
   type        = number
-  default     = 80
+  default     = 3000
 }
 
 variable "cpu" {
@@ -31,6 +31,5 @@ variable "region" {
 variable "hosted_zone_name" {
   description = "The name of the Route 53 hosted zone"
   type        = string
-  default     = "tm.shuaib.dev"
-
+  default     = "portfolio.shuaib.dev"
 }
