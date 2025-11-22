@@ -13,9 +13,9 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/ecs-project",
+                    "awslogs-group": "/ecs/shuaib-ecs-project",
                     "awslogs-region": "eu-west-2",
-                    "awslogs-stream-prefix": "ecs-project"
+                    "awslogs-stream-prefix": "shuaib-ecs-project"
                 }
             },
             "mountPoints": [],
@@ -33,12 +33,12 @@
     ],
     "cpu": "256",
     "executionRoleArn": "arn:aws:iam::850649281993:role/shuaib-ecs-project-task-exec",
-    "family": "ecs-project-task",
+    "family": "shuaib-ecs-project-task",
     "memory": "512",
     "networkMode": "awsvpc",
     "placementConstraints": [],
-    "registeredAt": "2025-11-11T22:58:50.308Z",
-    "registeredBy": "arn:aws:sts::850649281993:assumed-role/github-actions-oidc-dev/GitHubActions",
+    "registeredAt": "2025-11-21T17:27:24.102Z",
+    "registeredBy": "arn:aws:iam::850649281993:user/shubz-iam",
     "requiresAttributes": [
         {
             "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
@@ -65,9 +65,9 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "revision": 6,
+    "revision": 4,
     "status": "ACTIVE",
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:850649281993:task-definition/ecs-project-task:6",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:850649281993:task-definition/shuaib-ecs-project-task:4",
     "volumes": [],
     "tags": [
         {
