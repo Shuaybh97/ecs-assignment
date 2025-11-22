@@ -66,7 +66,7 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
         task-definition: ${{ steps.render-task-def.outputs.task-definition }}
-        service: ecs-project-service
+        service: shuaib-ecs-project-service
         cluster: ecs_cluster  
         image1-value: ${{ steps.login-ecr.outputs.registry }}/ecs-assignment:${{ github.sha }}
         wait-for-service-stability: true
